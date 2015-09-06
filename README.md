@@ -1,8 +1,6 @@
 # Confabulate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/confabulate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Config how you remember it should have been.
 
 ## Installation
 
@@ -22,7 +20,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Assign a config key-value pair:
+
+```ruby
+Config[:key] = 'value' # true
+```
+
+Retrieve a value for a key:
+
+```ruby
+Config[:key] # 'value'
+Config[:unset_key] # ConfigError: Key 'unset_key' not set
+```
+
+Validations:
+
+```ruby
+Config.validate :key, ->(value) { value > 0 }
+
+Config[:key] = 1 # true
+Config[:key] # 1
+
+Config[:key] = -2 # false
+Config[:key] # 1
+```
 
 ## Development
 
