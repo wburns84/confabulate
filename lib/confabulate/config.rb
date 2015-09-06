@@ -18,10 +18,6 @@ class Config
     @config = @default_config.clone
   end
 
-  def self.validate key, lambda
-    @validations[key] = lambda
-  end
-
   private
 
   @default_config = {}
